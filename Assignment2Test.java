@@ -141,6 +141,47 @@ public class Assignment2Test {
         return (end-start);
     }
 
+//    public long timingTest() {
+//        File file = new File("/usr/share/dict/words");
+//        BufferedReader reader = null;
+//        ArrayList<String> lookingFor = new ArrayList<String>();
+//        Random random = new Random();
+//        boolean success = true;
+//        long start = 0;
+//        long end = 0;
+//        System.out.println("made it here");
+//        Hashtable hashtable = new Hashtable();
+//
+//        try {
+//            reader = new BufferedReader(new FileReader(file));
+//            String text = null;
+//
+//            start = System.currentTimeMillis();
+//            while ((text = reader.readLine()) != null) {
+//                hashtable.put(text, text);
+//                if (random.nextFloat() < 0.0002) {
+//                    lookingFor.add(text);
+//                }
+//            }
+//
+//            for (int i = 0; i < lookingFor.size(); i++) {
+//                if (! hashtable.get(lookingFor.get(i)).equals(lookingFor.get(i))) {
+//                    System.out.println("       failed to get item from hashtable: " + lookingFor.get(i));
+//                    success = false;
+//                }
+//            }
+//            end = System.currentTimeMillis();
+//        } catch (Exception e) {
+//            System.out.println("Unable to conduct timing test.");
+//            success = false;
+//        }
+//
+//        if (! success)
+//            return Long.MAX_VALUE;
+//
+//        return (end-start);
+//    }
+
 
     public void runTest () {
         int grade = 0;
