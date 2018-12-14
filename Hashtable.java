@@ -35,7 +35,7 @@ public class Hashtable<k, v> {
         while (node != null) {
             if (node.key.equals(key))
                 return node.value; // returns the value of the stored item
-            node = node.next; // traverses the list
+            node = node.next; // traverses the node list
         }
         return null;
     }
@@ -45,7 +45,7 @@ public class Hashtable<k, v> {
         while (node != null) {
             if (node.key.equals(key)) // checks if the key exists to return true
                 return true;
-            node = node.next; // traverses the list
+            node = node.next; // traverses the node list
         }
         return false;
     }
@@ -56,14 +56,14 @@ public class Hashtable<k, v> {
         int bucketLocationInArray = getBucket(key);
         HashNode node = buckets[bucketLocationInArray];
         while (node != null) {
-            if (node.key.equals(key)) {
+            if (node.key.equals(key)) { //assigns the key and value if the location already exists
                 node.key = key;
                 node.value = value;
                 return;
             }
-            node = node.next; // traverses the list
+            node = node.next; // traverses the node list
         }
-        
+
         // creates a new node to the hashtable
         ++size;
         HashNode newNode = new HashNode(key, value); // create new node to store item
@@ -75,20 +75,18 @@ public class Hashtable<k, v> {
         int bucketLocationInArray = getBucket(key);
         HashNode node = buckets[bucketLocationInArray];
         HashNode prev = null;
-        while (node != null && !node.key.equals(key)){ // traversing the list
+        while (node != null && !node.key.equals(key)){ // traversing the node list
             prev = node;
             node = node.next;
         }
-        if (node.key.equals(key))
-        {
-            if (prev == null) {
-                buckets[bucketLocationInArray] = node.next; // removes the head
-                --size;
-            }
-            else {
-                prev.next = node.next; // removes middle/end node
-                --size;
-            }
+
+        if (prev == null) {
+            buckets[bucketLocationInArray] = node.next; // removes the head
+            --size;
+        }
+        else {
+            prev.next = node.next; // removes middle/end node
+            --size;
         }
         return node.value; // returns the value
     }
